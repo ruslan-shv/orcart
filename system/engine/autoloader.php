@@ -8,7 +8,7 @@ spl_autoload_register(function ($class) {
     ];
 	
 	foreach ($directories as $directory) {
-        $file = DIR_SYSTEM .  $directory . strtolower($class) . '.php';
+        $file = DIR_CORE .  $directory . strtolower($class) . '.php';
         
         if (is_file($file)) {
             require_once($file);

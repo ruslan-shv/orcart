@@ -3,19 +3,16 @@ class DB {
     private $connection;
     private $registry;
 
-    public function __construct($hostname, $username, $password, $database, $port = '3306') {
-        $this->connection = new \MySQLi($hostname, $username, $password, $database, $port);
+    public function __construct($registry) {
+        $this->registry = $registry;
+        $this->connection = new \MySQLi(DB_HOSTNAME, DB_USERNAME, DB_PASSWORD,
+            DB_DATABASE, DB_PORT);
 
         if ($this->connection->connect_error) {
             throw new \Exception('Ошибка подключения к БД: ' . $this->connection->connect_error);
         }
 
         $this->connection->set_charset("utf8");
-    }
-
-    // Передаем Registry, чтобы иметь доступ к профилировщику
-    public function setRegistry($registry) {
-        $this->registry = $registry;
     }
 
     public function query($sql) {

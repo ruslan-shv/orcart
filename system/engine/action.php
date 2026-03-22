@@ -15,7 +15,7 @@ class Action {
         // последняя обычно считается методом класса.
         // Пример: 'checkout/cart/add' -> файл checkout/cart.php, метод add()
         while ($parts) {
-            $file = DIR_APPLICATION . 'controller/' . implode('/', $parts) . '.php';
+            $file = DIR_APP . 'controller/' . implode('/', $parts) . '.php';
 
             if (is_file($file)) {
                 $this->route = implode('/', $parts);
@@ -28,7 +28,7 @@ class Action {
 
     public function execute($registry, array $args = array()) {
         $class = 'Controller' . preg_replace('/[^a-zA-Z0-9]/', '', $this->route);
-        $file = DIR_APPLICATION . 'controller/' . $this->route . '.php';
+        $file = DIR_APP . 'controller/' . $this->route . '.php';
 
         if (is_file($file)) {
             include_once($file);

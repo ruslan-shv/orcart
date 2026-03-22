@@ -1,4 +1,10 @@
+Options +FollowSymlinks
 RewriteEngine On
+RewriteBase /orcart/
+
+# Не перенаправлять существующие файлы и папки (картинки, стили)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+
+# Все остальное шлем в index.php
 RewriteRule ^([^?]*) index.php?_route_=$1 [L,QSA]

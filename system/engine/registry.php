@@ -9,7 +9,7 @@ class Registry {
 
     public function __construct() {
         // Сканируем папку library и запоминаем, какие классы у нас есть
-        $files = glob(DIR_SYSTEM . 'library/*.php');
+        $files = glob(DIR_CORE . 'library/*.php');
         foreach ($files as $file) {
 			$filename = strtolower(basename($file, '.php'));
             if ($filename == 'registry') continue;

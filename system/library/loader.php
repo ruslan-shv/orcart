@@ -10,7 +10,7 @@ class Loader {
     public function controller($route, $data = array()) {
         $parts = explode('/', str_replace('../', '', (string)$route));
         $method = array_pop($parts); // Последняя часть — это метод (например, index)
-        $file = DIR_APPLICATION . 'controller/' . implode('/', $parts) . '.php';
+        $file = DIR_APP . 'controller/' . implode('/', $parts) . '.php';
         $class = 'Controller' . preg_replace('/[^a-zA-Z0-9]/', '', implode('', $parts));
 
         if (file_exists($file)) {
@@ -24,7 +24,7 @@ class Loader {
 
     // Загрузка шаблона (отображение)
     public function view($route, $data = array()) {
-        $file = DIR_APPLICATION . 'view/' . $route . '.php'; // Пока используем простой PHP
+        $file = DIR_APP . 'view/' . $route . '.php'; // Пока используем простой PHP
         
         if (file_exists($file)) {
             extract($data); // Превращает ['title' => 'Hello'] в переменную $title
