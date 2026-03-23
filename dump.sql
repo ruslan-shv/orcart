@@ -38,3 +38,21 @@ CREATE TABLE `orc_product`
   DEFAULT CHARSET = utf8
   COLLATE = utf8_general_ci;
 
+CREATE TABLE `orc_category`
+(
+    `category_id` INT(11)      NOT NULL AUTO_INCREMENT,
+    `parent_id`   INT(11)      NOT NULL DEFAULT '0',
+    `name`        VARCHAR(255) NOT NULL,
+    `status`      TINYINT(1)   NOT NULL DEFAULT '1',
+    PRIMARY KEY (`category_id`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
+
+
+CREATE TABLE `orc_product_to_category`
+(
+    `product_id`  INT(11) NOT NULL,
+    `category_id` INT(11) NOT NULL,
+    PRIMARY KEY (`product_id`, `category_id`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;

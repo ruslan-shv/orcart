@@ -39,4 +39,15 @@ class SeoUrl {
             $_GET['route'] = 'product/category';
         }
     }
+
+
+    public function link($route, $args = '') {
+        $url = 'index.php?route=' . $route;
+        if ($args) {
+            // Убираем лишние амперсанды и добавляем аргументы (например, &path=1_2)
+            $url .= '&' . ltrim($args, '&');
+        }
+        return $url;
+    }
+
 }

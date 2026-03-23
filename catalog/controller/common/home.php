@@ -7,6 +7,7 @@ class ControllerCommonHome extends Controller {
         // Магия: вызываем контроллер хедера и записываем его результат в переменную
         $data['header'] = $this->load->controller('common/header');
         $data['footer'] = $this->load->controller('common/footer'); // Если создашь его
+        $data['menu'] = $this->load->controller('common/menu');
 
         // 2. Теперь модель доступна как свойство контроллера через магию Registry
         $data['latest'] = $this->model_catalog_product->getLatest(8);
