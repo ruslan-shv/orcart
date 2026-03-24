@@ -11,9 +11,12 @@
                     <?php foreach ($latest as $product) { ?>
                         <div class="product-card">
                             <div class="image text-center">
-                                <img src="image/<?php echo $product['image'] ?: 'no-image.png'; ?>" alt="" style="max-width:100%">
+                                <img src="<?php echo $product['thumb'] ?: 'no-image.png'; ?>" alt="" style="max-width:100%">
                             </div>
-                            <h4><?php echo $product['name']; ?></h4>
+                            <a href="<?php echo $product['href']; ?>">
+                                <h4><?php echo $product['name']; ?></h4>
+                            </a>
+
                             <div class="price"><?php echo number_format($product['price'], 0, '.', ' '); ?> ₽</div>
                             <button class="btn-buy">В корзину</button>
                         </div>

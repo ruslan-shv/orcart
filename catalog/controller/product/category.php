@@ -56,12 +56,14 @@ class ControllerProductCategory extends Controller {
             $data['products'] = array();
             $results = $this->model_catalog_product->getProducts(array('filter_category_id' => $category_id));
 
+
             foreach ($results as $result) {
+
                 $data['products'][] = array(
                     'product_id' => $result['product_id'],
                     'name'       => $result['name'],
                     'price'      => $result['price'],
-                    'image'      => $result['image'],
+                    'thumb'      => $this->image->getResize($result['image'], 250, 250),
                     'href'       => $this->url->link('product/product', 'path=' . $this->request->get['path'] . '&product_id=' . $result['product_id'])
                 );
             }

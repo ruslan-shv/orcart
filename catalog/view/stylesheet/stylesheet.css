@@ -105,3 +105,18 @@ body { font-family: sans-serif; line-height: 1.6; color: #333; background: #f9f9
     flex-grow: 1;
     min-width: 0;
 }
+
+
+.product-card .image {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.product-card .image img {
+    max-height: 100%;
+    object-fit: contain; /* Картинка впишется без искажений */
+}

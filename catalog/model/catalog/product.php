@@ -19,19 +19,11 @@ class ModelCatalogProduct extends Model
         return $query->rows;
     }
 
-    /**
-     * Получение одного товара по ID (пригодится для карточки товара)
-     */
-    public function getProduct($product_id)
-    {
-        $sql = "SELECT DISTINCT * FROM  " . DB_PREFIX . "product p
-                WHERE p.product_id = '" . (int)$product_id . "' 
-                AND p.status = '1'";
-
-        $query = $this->db->query($sql);
-
+    public function getProduct($product_id) {
+        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product WHERE product_id = '" . (int)$product_id . "' AND status = '1'");
         return $query->row;
     }
+
 
     public function getProducts($data = array()) {
         // Выбираем уникальные товары (DISTINCT на случай дублей в связях)

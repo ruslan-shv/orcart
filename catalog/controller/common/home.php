@@ -10,8 +10,18 @@ class ControllerCommonHome extends Controller {
         $data['menu'] = $this->load->controller('common/menu');
 
         // 2. Теперь модель доступна как свойство контроллера через магию Registry
-        $data['latest'] = $this->model_catalog_product->getLatest(8);
+        $results =  $this->model_catalog_product->getLatest(8);
 
+        foreach ($results as $result) {
+            $data['latest'][] = array(
+                'product_id' => $result['product_id'],
+                'name'       => $result['name'],
+                'thumb'      => $this->image->getResize($result['image'], 250, 250),
+                'price'      => $result['price'],
+                // Генерируем ссылку в контроллере!
+                'href'       => $this->url->link('product/product', 'product_id=' . $result['product_id'])
+            );
+        }
 
         $this->response->setOutput($this->load->view('common/home', $data));
     }
