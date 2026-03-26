@@ -19,11 +19,15 @@
                 <div class="price" style="font-size: 24px; color: #e74c3c; font-weight: bold; margin: 20px 0;">
                     <?php echo $price; ?> ₽
                 </div>
-                <!-- HTML кнопки -->
+                <!-- Кнопка с ID товара -->
                 <div class="cart-control">
-                    <button type="button" id="button-cart" class="btn-buy" style="padding: 10px 20px;">В корзину</button>
+                    <button type="button"
+                            class="btn-buy button-cart-ajax"
+                            data-product-id="<?php echo $product_id; ?>"
+                            style="padding: 10px 20px;">
+                        В корзину
+                    </button>
                 </div>
-
                 <div class="description" style="margin-top: 30px; line-height: 1.6;">
                     <h3>Описание</h3>
                     <?php echo $description; ?>
@@ -32,25 +36,5 @@
         </div>
     </main>
 </div>
-<!-- JS обработчик -->
-<script>
-    document.querySelector('#button-cart').addEventListener('click', function() {
-        const productId = new URLSearchParams(window.location.search).get('product_id');
-        const quantity = 1;
 
-        fetch('index.php?route=checkout/cart/add', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: `product_id=${productId}&quantity=${quantity}`
-        })
-            .then(response => response.json())
-            .then(json => {
-                if (json['success']) {
-                    alert(json['success']); // Временно выводим алертом
-                    // Тут можно обновить счетчик в шапке:
-                    // document.querySelector('#cart-total').textContent = json['total'];
-                }
-            });
-    });
-</script>
 <?php echo $footer; ?>

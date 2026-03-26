@@ -8,6 +8,7 @@ class ControllerProductProduct extends Controller {
         $product_info = $this->model_catalog_product->getProduct($product_id);
 
         if ($product_info) {
+            $data['product_id'] = $product_id;
             $data['heading_title'] = $product_info['name'];
             $data['description'] = html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8');
             $data['price'] = number_format($product_info['price'], 0, '.', ' ');

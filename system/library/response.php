@@ -23,4 +23,9 @@ class Response {
             echo $this->output;
         }
     }
+
+    public function redirect($url, $status = 302) {
+        header('Location: ' . str_replace(['&amp;', "\n", "\r"], ['&', '', ''], $url), true, $status);
+        exit;
+    }
 }

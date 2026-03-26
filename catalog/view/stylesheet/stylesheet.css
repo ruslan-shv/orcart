@@ -120,3 +120,66 @@ body { font-family: sans-serif; line-height: 1.6; color: #333; background: #f9f9
     max-height: 100%;
     object-fit: contain; /* Картинка впишется без искажений */
 }
+
+/* Основная обертка хедера */
+.main-header {
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+}
+
+/* Флекс-контейнер для выравнивания */
+.header-flex {
+    display: flex;
+    justify-content: space-between; /* Лого слева, корзина справа */
+    align-items: center;           /* Центрирование по вертикали */
+    max-width: 1200px;             /* Ширина контента */
+    margin: 0 auto;                /* Центрирование контейнера */
+    padding: 0 15px;
+}
+
+/* Убираем лишние отступы у заголовка */
+.logo h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.logo a {
+    text-decoration: none;
+    color: #333;
+}
+
+/* Оформление корзины */
+.cart-container {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    background: #f9f9f9;
+    padding: 8px 15px;
+    border-radius: 25px;
+    border: 1px solid #ddd;
+    color: #333;
+    position: relative;
+    transition: all 0.2s;
+}
+
+.cart-container:hover {
+    background: #f0f0f0;
+}
+
+#cart-total-count {
+    background: #28a745;
+    color: white;
+    border-radius: 10px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 8px;
+    min-width: 20px;
+    text-align: center;
+}
+
+/* Если в корзине 0, можно сделать его менее ярким или скрыть через JS */
+#cart-total-count:contains('0') {
+    background: #ccc;
+}

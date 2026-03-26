@@ -8,8 +8,18 @@
     <?php } ?>
 </head>
 <body>
-<header>
-    <div class="container">
-        <h1>Orcart</h1>
+<header class="main-header">
+    <div class="container header-flex">
+        <div class="logo">
+            <h1><a href="index.php?route=common/home">Orcart</a></h1>
+        </div>
+
+        <div class="header-cart">
+            <a href="index.php?route=checkout/cart" class="cart-container">
+                <span class="cart-icon">🛒</span>
+                <span class="cart-text">Корзина</span>
+                <span id="cart-total-count"><?php echo $cart_total; ?></span>
+            </a>
+        </div>
     </div>
 </header>

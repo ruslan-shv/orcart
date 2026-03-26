@@ -55,7 +55,15 @@
                     </a>
 
                     <div class="price"><?php echo number_format($product['price'], 0, '.', ' '); ?> ₽</div>
-                    <button class="btn-buy">В корзину</button>
+                    <!-- Кнопка с ID товара -->
+                    <div class="cart-control">
+                        <button type="button"
+                                class="btn-buy button-cart-ajax"
+                                data-product-id="<?php echo $product['product_id']; ?>"
+                                style="padding: 10px 20px;">
+                            В корзину
+                        </button>
+                    </div>
                 </div>
             <?php } ?>
         </div>
